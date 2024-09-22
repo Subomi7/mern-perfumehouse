@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+  --ff-sansita: 'Sansita', sans-serif;
+  --purple: #8d34ff;
+  --off-white: #f5f5f5;
+  --login-bgrc: rgba(230, 210, 255, 1);
+  --ff-outfit: "Outfit", sans-serif;
+}
+
+@font-face {
+  font-family: neural-gotesk;
+  src: url(./fonts/Demo_Fonts/Fontspring-DEMO-neurialgrotesk-regular.otf);
+}
+
+/* Nav */
+nav h2 {
+  font-family: var(--ff-sansita);
+  font-weight: 700;
+  font-size: 28.33px;
+}
+
+nav h1 {
+  font-family: var(--ff-outfit);
+  font-weight: 500;
+  font-size: ;
+}
+
+.login-btn {
+  background-color: var(--login-bgrc);
+  color: var(--purple);
+  border-radius: 8px;
+  font-family: neural-gotesk;
+  border: none;
+  height: 61px;
+  width: 140px;
+  font-weight: 500;
+  font-size: 20px;
+}
+.sign-up-btn {
+  background-color: var(--purple);
+  color: var(--off-white);
+  border-radius: 8px;
+  font-family: neural-gotesk;
+  border: none;
+  height: 61px;
+  width: 140px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.sign-up-link {
+  color: var(--off-white);
+}
+
+.login-link {
+  color: var(--purple);
+}
+
+
+.log-out h4 {
+  font-family: var(--ff-outfit);
+  font-size: 22px;
+  font-weight: 400;
+  color: #db3e3e;
+}
