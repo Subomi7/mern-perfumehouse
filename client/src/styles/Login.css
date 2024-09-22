@@ -17,8 +17,9 @@
   background: white;
   width: 100%;
   max-width: 642px;
-  padding: 3rem 5rem;
+  padding: 1rem 5rem;
   border-radius: 15px;
+  margin: 4rem;
 }
 
 .form-container h2 {
@@ -121,9 +122,7 @@ h4 {
   .form-container {
     width: 100%;
     max-width: 342px;
-    padding: 3rem 2rem;
-    margin-bottom: 3rem;
-  }
+    padding: 3rem 2rem;  }
   /* .divider {
     margin-right: 32rem;
   } */
