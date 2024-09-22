@@ -118,11 +118,13 @@ h4 {
 @media (max-width: 465px) {
   .main-container {
     height: 100vh;
+    background: white;
+    margin: 0;
   }
   .form-container {
     width: 100%;
     max-width: 342px;
-    padding: 3rem 2rem;  }
+    padding: 1rem 1rem;  }
   /* .divider {
     margin-right: 32rem;
   } */
