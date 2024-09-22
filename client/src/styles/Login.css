@@ -31,7 +31,7 @@
   font-family: neural-gotesk;
   font-weight: 400;
   font-size: 16px;
-  color: #181A20D1;
+  color: #181a20d1;
 }
 
 .btn-2 {
@@ -69,17 +69,19 @@
 } */
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: green!important;
+  background-color: green !important;
 }
 
-.custom-checkbox .custom-control-input:checked:focus ~ .custom-control-label::before {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 255, 0, 0.25)
+.custom-checkbox
+  .custom-control-input:checked:focus
+  ~ .custom-control-label::before {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 255, 0, 0.25);
 }
 .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25)
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
 }
 .custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
-  background-color: #C8FFC8; 
+  background-color: #c8ffc8;
 }
 .group {
   font-family: Neurial Grotesk;
@@ -99,11 +101,22 @@
   margin: auto 0.25em;
   box-shadow: 0 -1px; /* ou 0 1px si border-style:ridge */
 }
+h4 {
+  font-family: neurial Grotesk;
+  font-size: 18px;
+  font-weight: 400;
+  padding-top: 2rem;
+}
+
+.link {
+  text-decoration: none;
+
+  color: #8d34ff;
+}
 
 @media (max-width: 465px) {
-  .main-container{
+  .main-container {
     height: 100vh;
-
   }
   .form-container {
     width: 100%;
@@ -120,9 +133,9 @@
   }
 
   .divider p:before,
-.divider p:after {
-  flex: none;
-  width: 95px;
-  margin: 1rem 0.5em;
-}
+  .divider p:after {
+    flex: none;
+    width: 95px;
+    margin: 1rem 0.5em;
+  }
 }

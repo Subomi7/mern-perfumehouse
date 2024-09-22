@@ -82,9 +82,11 @@ const Login = () => {
               </svg>
               Continue with Google
             </button>
+            <h4 className='text-center'>Don’t have an account?  <Link className='link' to="/auth/SignUp">Sign Up</Link></h4>
           </Form>
         </div>
       </main>
+      
     </div>
   );
 };
