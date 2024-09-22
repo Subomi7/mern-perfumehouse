@@ -45,7 +45,7 @@ const Login = () => {
               className='mb-2 d-flex justify-content-between align-item-center'
               controlId='formBasicCheckbox'
             >
-              <Form.Check type='checkbox' label='Check me out' />
+              <Form.Check type='checkbox' label='Remember me' />
               <p><Link className='group'>Forgot Password</Link></p>
             </Form.Group>
             <button className='btn-1 w-100 mb-2' type='submit'>
