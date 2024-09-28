@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727523484/perfume_1_ao2zjr.svg",
+    "title": "Ralph Lauren Perfume",
+    "rating": "5.0",
+    "rateCount": "24",
+    
+    "price": "3000",
+    "discountPrice": "# 4,000"
+  },
+  {
+    "id": 2,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727523500/perfume_2_wx0asf.svg",
+    "title": "Oud Touch Franck Oliver",
+    "rating": "5.0",
+    "rateCount": "24",
+    "price": "3000",
+    "discountPrice": "4,000"
+  },
+  {
+    "id": 3,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727523517/perfume_3_oehcui.svg",
+    "title": "Elegance Essence",
+    "rating": "5.0",
+    "rateCount": "24",
+    "price": "3000",
+    "discountPrice": "4,000"
+  },
+  {
+    "id": 4,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727523521/perfume_4_t5mvh3.svg",
+    "title": "Timeless Bouquet",
+    "rating": "5.0",
+    "rateCount": "24",
+    "price": "3000",
+    "discountPrice": "4,000"
+  },
+  {
+    "id": 5,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727523525/perfume_5_paaojc.svg",
+    "title": "Aventos Blue for Him",
+    "rating": "5.0",
+    "rateCount": "24",
+    "price": "3000",
+    "discountPrice": "4,000"
+  },
+  {
+    "id": 6,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727523531/perfume_6_lzamdx.svg",
+    "title": "Asad Mousouff",
+    "rating": "5.0",
+    "rateCount": "24",
+    "price": "3000",
+    "discountPrice": "4,000"
+  }
+]

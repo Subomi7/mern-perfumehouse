@@ -1,7 +1,5 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import frame from '../assets/Frame 113.svg';
 import navLogo from '../assets/Group 9283.svg';
 import '../styles/Login.css';
 import { Link } from 'react-router-dom';

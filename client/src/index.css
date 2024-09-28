@@ -2,17 +2,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
   --ff-sansita: 'Sansita', sans-serif;
   --purple: #8d34ff;
   --off-white: #f5f5f5;
   --login-bgrc: rgba(230, 210, 255, 1);
-  --ff-outfit: "Outfit", sans-serif;
+  --ff-outfit: 'Outfit', sans-serif;
+  --ff-poppins: 'Poppins', sans-serif;
 }
 
 @font-face {
   font-family: neural-gotesk;
-  src: url(./fonts/Demo_Fonts/Fontspring-DEMO-neurialgrotesk-regular.otf);
+  src: url('./fonts/Demo_Fonts/Fontspring-DEMO-neurialgrotesk-regular.otf');
 }
 
 /* Nav */
@@ -25,7 +28,6 @@ nav h2 {
 nav h1 {
   font-family: var(--ff-outfit);
   font-weight: 500;
-  font-size: ;
 }
 
 .login-btn {
@@ -59,10 +61,76 @@ nav h1 {
   color: var(--purple);
 }
 
-
 .log-out h4 {
   font-family: var(--ff-outfit);
   font-size: 22px;
   font-weight: 400;
   color: #db3e3e;
+}
+
+/* cards */
+.card-container {
+  width: 30%;
+}
+
+.card-img {
+  height: 256.62px;
+  width: 256.62px;
+}
+
+.card-title {
+  font-family: neural-gotesk;
+  font-weight: 700;
+  font-size: 15.97px;
+}
+.add-to-cart-btn {
+  background-color: var(--purple);
+  color: #fefeff;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  font-family: var(--ff-poppins);
+}
+
+.card-discount-price {
+  color: #a2a2a2;
+  font-size: 15.97px;
+  font-weight: 500;
+}
+
+.card-price {
+  font-weight: 500;
+  font-size: 15.97;
+  color: var(--purple);
+}
+
+@media (max-width: 765px) {
+  /* cards */
+  .card-container {
+    width: 100%;
+  }
+
+  .card-img {
+    height: 335.55px;
+    width: 335.55px;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .card-container {
+    min-width: 48%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .card-img {
+    height: 335.55px;
+    width: 335.55px;
+  }
 }

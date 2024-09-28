@@ -24,7 +24,7 @@ const NavBar = () => {
             <>
               <div className='position-relative'>
                 <h1>
-                  Hi, Jurrian Timber{' '}
+                  Hi, Abigail Timber{' '}
                   <span className='ms-3'>
                     {isReaveal ? (
                       <img
@@ -72,11 +72,7 @@ const NavBar = () => {
 
         <div className='d-md-none'>
           {['top'].map((placement, idx) => (
-            <OffCanvas
-              key={idx}
-              placement={placement}
-              name={placement}
-            />
+            <OffCanvas key={idx} placement={placement} name={placement} />
           ))}
         </div>
       </nav>

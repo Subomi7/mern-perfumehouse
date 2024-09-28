@@ -30,7 +30,7 @@ const SignUp = () => {
                 <Form.Group className='mb-3' controlId='formBasicEmail'>
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
-                    type='email'
+                    type='firstname'
                     placeholder='Enter Name'
                     className='w-100'
                   />
@@ -38,7 +38,7 @@ const SignUp = () => {
                 <Form.Group className='mb-3' controlId='formBasicEmail'>
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
-                    type='email'
+                    type='lastname'
                     placeholder='Enter Name'
                     className='w-100'
                   />

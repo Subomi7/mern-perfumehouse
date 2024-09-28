@@ -40,7 +40,7 @@
   background-color: white;
   color: #292929;
   font-weight: 600;
-  font-family: neurial Grotesk;
+  font-family: neurial-grotesk;
   border: 1px solid #000000;
   border-radius: 15px;
 }
@@ -50,7 +50,7 @@
   font-weight: 300;
   background-color: #8d34ff;
   color: white;
-  font-family: neurial Grotesk;
+  font-family: neurial-grotesk;
   border: none;
   border-radius: 15px;
 }
@@ -69,21 +69,6 @@
   accent-color: green;
 } */
 
-.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: green !important;
-}
-
-.custom-checkbox
-  .custom-control-input:checked:focus
-  ~ .custom-control-label::before {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 255, 0, 0.25);
-}
-.custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
-}
-.custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
-  background-color: #c8ffc8;
-}
 .group {
   font-family: Neurial Grotesk;
   font-weight: 400;
@@ -103,7 +88,7 @@
   box-shadow: 0 -1px; /* ou 0 1px si border-style:ridge */
 }
 h4 {
-  font-family: neurial Grotesk;
+  font-family: neurial-grotesk;
   font-size: 18px;
   font-weight: 400;
   padding-top: 2rem;
