@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <div className='main-container'>
       <nav>
-        <div className='text-decoration-none d-flex gap-2 p-5'>
+        <div className='text-decoration-none d-flex gap-2 px-4 pt-3'>
           <Link to='/'>
             <img src={navLogo} alt='company-logo' />
           </Link>
