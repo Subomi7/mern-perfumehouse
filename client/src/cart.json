@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727623916/Frame_1000004688_r17tfd.png",
+    "title": "Ralph Lauren Perfume",
+    "price": "6000",
+    "button": "Remove"
+  },
+  {
+    "id": 2,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727623916/Frame_1000004688_1_r8crqb.png",
+    "title": "Oud Touch Franck Oliver",
+    "price": "6000",
+    "button": "Remove"
+  },
+  {
+    "id": 3,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727623916/Frame_1000004688_2_uerkqm.png",
+    "title": "Polo Perfume",
+    "price": "6000",
+    "button": "Remove"
+  },
+  {
+    "id": 4,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727623916/Frame_1000004688_3_wndjxt.png",
+    "title": "Fried Rice & Chicken",
+    "price": "6000",
+    "button": "Remove"
+  }
+]

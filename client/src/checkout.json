@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727659672/Frame_1000004688_4_hvxqrx.png",
+    "title": "Frank Oliver Oud Touch",
+    "quatity": "2x",
+    "price": "N5,600",
+    "amount": "N11,200"
+  },
+  {
+    "id": 2,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727659672/Frame_1000004688_4_hvxqrx.png",
+    "title": "Frank Oliver Oud Touch",
+    "quatity": "1x",
+    "price": "N5,600",
+    "amount": "N5,600"
+  },
+  {
+    "id": 3,
+    "image": "https://res.cloudinary.com/dpus5s1cs/image/upload/v1727659672/Frame_1000004688_4_hvxqrx.png",
+    "title": "Frank Oliver Oud Touch",
+    "quatity": "1x",
+    "price": "N5,600",
+    "amount": "N5,600"
+  }
+]
