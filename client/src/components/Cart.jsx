@@ -68,7 +68,7 @@ const Cart = ({ cart, removeItem, calcTotalPrice }) => {
               <div className='checkout'>
                 <p className='checkout-title'>Total</p>
                 <p className='checkout-price'>
-                  {calcTotalPrice.toLocaleString()}
+                  N{calcTotalPrice.toLocaleString()}
                 </p>
               </div>
             </div>
