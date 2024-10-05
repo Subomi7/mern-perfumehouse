@@ -4,7 +4,9 @@ import Card from 'react-bootstrap/Card';
 import ratingImg from '../assets/Star.svg';
 import products from '../product.json';
 
-const Product = () => {
+const Product = ({ cart, setCart, handleAddToCart }) => {
+  
+  const isItemInCart = (itemId) =>cart.some((product) => product.id === itemId);
   return (
     <>
       <main className='d-flex flex-wrap justify-content-between gap-4 pt-2'>
@@ -35,7 +37,13 @@ const Product = () => {
                     #{discountPrice}
                   </span>
                 </Card.Text>
-                <button className='add-to-cart-btn w-100'>Add to cart</button>
+                <button
+                  disabled={isItemInCart(id)}
+                  className='add-to-cart-btn w-100'
+                  onClick={() => handleAddToCart(product)}
+                >
+                  {isItemInCart(id) ? "Added to Cart" : "Add to Cart"}
+                </button>
               </Card.Body>
             </Card>
           );
