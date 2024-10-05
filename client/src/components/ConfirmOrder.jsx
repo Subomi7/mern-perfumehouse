@@ -9,7 +9,7 @@ const ConfirmOrder = (props) => {
   return (
     <>
       <Modal
-        className='d-flex flex-column w-100 gateway'
+        className='d-flex flex-column custom-modal-width gateway'
         {...props}
         size='lg'
         aria-labelledby='contained-modal-title-vcenter'
