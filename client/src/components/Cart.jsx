@@ -6,17 +6,21 @@ import Modal from 'react-bootstrap/Modal';
 
 import ConfirmOrder from './ConfirmOrder';
 
-const Cart = ({cart, removeItem, calcTotalPrice}) => {
+const Cart = ({ cart, removeItem, calcTotalPrice }) => {
   const [modalShow, setModalShow] = useState(false);
   return (
     <>
       <main className='cart-container d-flex flex-column justify-content-center gap-2'>
         <h2>My Cart Preview</h2>
         <div>
-          {cart.length === 0 && (<div>
-            <h3 className='fs-2 fst-italic text-danger'>No item(s) in the cart</h3>
-            <p className='fw-bolder text-success fs-4'>Keep shopping</p>
-          </div>)}
+          {cart.length === 0 && (
+            <div>
+              <h3 className='fs-2 fst-italic text-danger'>
+                No item(s) in the cart
+              </h3>
+              <p className='fw-bolder text-success fs-4'>Keep shopping</p>
+            </div>
+          )}
         </div>
         {cart.map((cartItem) => {
           const { id, title, price, button, image } = cartItem;
@@ -37,29 +41,45 @@ const Cart = ({cart, removeItem, calcTotalPrice}) => {
                 </div>
                 <div className='d-flex justify-content-between m-0'>
                   <p className='cart-price'>N{price}</p>
-                  <button className='remove-cart' onClick={() => removeItem(id)}>Remove</button>
+                  <button
+                    className='remove-cart'
+                    onClick={() => removeItem(id)}
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
             </div>
           );
         })}
-        <div className='checkout-container'>
-          <div className='checkout'>
-            <p className='checkout-title'>Sub Total</p>
-            <p className='checkout-price'>18,000</p>
-          </div>
-          <div className='checkout'>
-            <p className='checkout-title'>Delivery</p>
-            <p className='checkout-price'>8,000</p>
-          </div>
-          <div className='checkout'>
-            <p className='checkout-title'>Total</p>
-            <p className='checkout-price'>{calcTotalPrice.toLocaleString()}</p>
-          </div>
-        </div>
-        <button className='w-100 checkout-button' onClick={() => setModalShow(true)}>
-          Confirm Order{' '}
-        </button>
+        {cart.length === 0 ? (
+          ' '
+        ) : (
+          <>
+            <div className='checkout-container'>
+              <div className='checkout'>
+                <p className='checkout-title'>Sub Total</p>
+                <p className='checkout-price'>18,000</p>
+              </div>
+              <div className='checkout'>
+                <p className='checkout-title'>Delivery</p>
+                <p className='checkout-price'>8,000</p>
+              </div>
+              <div className='checkout'>
+                <p className='checkout-title'>Total</p>
+                <p className='checkout-price'>
+                  {calcTotalPrice.toLocaleString()}
+                </p>
+              </div>
+            </div>
+            <button
+              className='w-100 checkout-button'
+              onClick={() => setModalShow(true)}
+            >
+              Confirm Order{' '}
+            </button>
+          </>
+        )}
 
         <ConfirmOrder show={modalShow} onHide={() => setModalShow(false)} />
       </main>
