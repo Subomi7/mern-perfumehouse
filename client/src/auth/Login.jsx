@@ -3,10 +3,23 @@ import Form from 'react-bootstrap/Form';
 import navLogo from '../assets/Group 9283.svg';
 import '../styles/Login.css';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { logInSchema } from '../utils/ValidationSchema';
+
 const Login = () => {
   const navigateToGoogle = () => {
     window.open('https://www.google.com', '_blank');
   };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(logInSchema),
+  });
+  const onSubmit = (data) => console.log(data);
   return (
     <div className='main-container'>
       <nav>
@@ -19,16 +32,18 @@ const Login = () => {
       </nav>
       <main className=' d-flex flex-column justify-content-center align-items-center'>
         <div className='form-container d-flex flex-column'>
-          <Form>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <h2 className='text-black text-start'>Welcome Back</h2>
             <p>Fill in your information to access your account.</p>
-            <Form.Group className='mb-3' controlId='formBasicEmail'>
+            <Form.Group className='mb-3' controlId=''>
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type='email'
                 placeholder='Enter your email'
                 className='w-100'
+                {...register('email')}
               />
+              <p className='text-danger'>{errors.email?.message}</p>
             </Form.Group>
 
             <Form.Group className='mb-3' controlId='formBasicPassword'>
@@ -37,14 +52,18 @@ const Login = () => {
                 type='password'
                 placeholder='Enter your password'
                 className='w-100'
+                {...register('password')}
               />
+              <p className='text-danger'>{errors.password?.message}</p>
             </Form.Group>
             <Form.Group
               className='mb-2 d-flex justify-content-between align-item-center'
               controlId='formBasicCheckbox'
             >
               <Form.Check type='checkbox' label='Remember me' />
-              <p><Link className='group'>Forgot Password</Link></p>
+              <p>
+                <Link className='group'>Forgot Password</Link>
+              </p>
             </Form.Group>
             <button className='btn-1 w-100 mb-2' type='submit'>
               Sign in
@@ -52,7 +71,11 @@ const Login = () => {
             <div className='divider'>
               <p>or</p>
             </div>
-            <button className='btn-2 w-100 mt-2' type='submit' onClick={navigateToGoogle}>
+            <button
+              className='btn-2 w-100 mt-2'
+              type='submit'
+              onClick={navigateToGoogle}
+            >
               <svg
                 width='23'
                 height='23'
@@ -80,11 +103,15 @@ const Login = () => {
               </svg>
               Continue with Google
             </button>
-            <h4 className='text-center'>Don’t have an account?  <Link className='link' to="/auth/SignUp">Sign Up</Link></h4>
+            <h4 className='text-center'>
+              Don’t have an account?{' '}
+              <Link className='link' to='/auth/SignUp'>
+                Sign Up
+              </Link>
+            </h4>
           </Form>
         </div>
       </main>
-      
     </div>
   );
 };

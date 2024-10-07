@@ -25,6 +25,22 @@ function App() {
     }
   };
 
+  // function to increase quantity
+  const increaseQuantity = (id) => {
+    const updatedCart = cart.map((product) => 
+      product.id === id ? {...product, quatity: product.quantity + 1} : product
+    )
+    setCart(updatedCart)
+  }
+
+  // function to decrease quantity
+  const decreaseQuantity = (id) => {
+    const updatedCart = cart.map((product) => 
+      product.id === id && product.quantity > 1 ? {...product, quatity: product.quantity - 1} : product
+    )
+    setCart(updatedCart)
+  }
+
   // funtion to remove item
   function removeItem(id) {
     let remove = cart.filter((cartItx) => cartItx.id !== id);
@@ -54,6 +70,8 @@ function App() {
                   setCart={setCart}
                   removeItem={removeItem}
                   calcTotalPrice={calcTotalPrice}
+                  decreaseQuantity={decreaseQuantity}
+                  increaseQuantity={increaseQuantity}
                 />
               }
             />

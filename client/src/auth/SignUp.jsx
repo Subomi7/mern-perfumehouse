@@ -5,11 +5,22 @@ import frame from '../assets/Frame 113.svg';
 import navLogo from '../assets/Group 9283.svg';
 import '../styles/Login.css';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { signUpSchema } from '../utils/ValidationSchema';
 
 const SignUp = () => {
   const navigateToGoogle = () => {
     window.open('https://www.google.com', '_blank');
   };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(signUpSchema),
+  });
+  const onSubmit = (data) => console.log(data);
   return (
     <>
       <div className='main-container'>
@@ -23,25 +34,29 @@ const SignUp = () => {
         </nav>
         <main className=' d-flex flex-column justify-content-center align-items-center'>
           <div className='form-container d-flex flex-column'>
-            <Form>
+            <Form onSubmit={handleSubmit(onSubmit)}>
               <h2 className='text-black text-start'>Get Started</h2>
               <p>Lets get started by filling out the information below</p>
               <div className='d-flex gap-4 justify-content-lg-between'>
-                <Form.Group className='mb-3' controlId='formBasicEmail'>
+                <Form.Group className='mb-3' controlId=''>
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
-                    type='firstname'
+                    type='text'
                     placeholder='Enter Name'
                     className='w-100'
+                    {...register('firstName')}
                   />
+                  <p className='text-danger'>{errors.firstName?.message}</p>
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='formBasicEmail'>
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
-                    type='lastname'
+                    type='text'
                     placeholder='Enter Name'
                     className='w-100'
+                    {...register('lastName')}
                   />
+                  <p className='text-danger'>{errors.lastName?.message}</p>
                 </Form.Group>
               </div>
               <Form.Group className='mb-3' controlId='formBasicEmail'>
@@ -50,7 +65,9 @@ const SignUp = () => {
                   type='email'
                   placeholder='Enter your email'
                   className='w-100'
+                  {...register('email')}
                 />
+                <p className='text-danger'>{errors.email?.message}</p>
               </Form.Group>
 
               <Form.Group className='mb-3' controlId='formBasicPassword'>
@@ -59,7 +76,9 @@ const SignUp = () => {
                   type='password'
                   placeholder='Enter your password'
                   className='w-100'
+                  {...register('password')}
                 />
+                <p className='text-danger'>{errors.password?.message}</p>
               </Form.Group>
 
               <Form.Group className='mb-3' controlId='formBasicPassword'>
@@ -68,7 +87,9 @@ const SignUp = () => {
                   type='password'
                   placeholder='Confirm your password'
                   className='w-100'
+                  {...register('confirmPassword')}
                 />
+                <p className='text-danger'>{errors.confirmPassword?.message}</p>
               </Form.Group>
               <Form.Group className='mb-2' controlId='formBasicCheckbox'>
                 <Form.Check

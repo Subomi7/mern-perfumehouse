@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 
 import ConfirmOrder from './ConfirmOrder';
 
-const Cart = ({ cart, removeItem, calcTotalPrice }) => {
+const Cart = ({ cart, removeItem, calcTotalPrice, increaseQuantity, decreaseQuantity }) => {
   const [modalShow, setModalShow] = useState(false);
   return (
     <>
@@ -35,9 +35,9 @@ const Cart = ({ cart, removeItem, calcTotalPrice }) => {
               <div className='cart-2 d-flex flex-column m-0 p-0'>
                 <h4 className='cart-title'>{title}</h4>
                 <div className='d-flex gap-2 align-items-center'>
-                  <button className='subtract-cart'>-</button>
+                  <button className='subtract-cart' onClick={() => decreaseQuantity(id)}>-</button>
                   <p className='pt-3 cart-number'>1</p>
-                  <button className='add-cart text-center'>+</button>
+                  <button className='add-cart text-center' onClick={() => increaseQuantity(id)}>+</button>
                 </div>
                 <div className='d-flex justify-content-between m-0'>
                   <p className='cart-price'>N{price}</p>
