@@ -6,11 +6,15 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { logInSchema } from '../utils/ValidationSchema';
+import { useState } from 'react';
 
 const Login = () => {
   const navigateToGoogle = () => {
     window.open('https://www.google.com', '_blank');
   };
+
+  const [password, setPassword] = useState('');
+  const [reveal, setReveal] = useState(false);
 
   const {
     register,
@@ -49,10 +53,12 @@ const Login = () => {
             <Form.Group className='mb-3' controlId='formBasicPassword'>
               <Form.Label>Password</Form.Label>
               <Form.Control
-                type='password'
+                type={reveal ? 'text' : 'password'}
                 placeholder='Enter your password'
                 className='w-100'
                 {...register('password')}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <p className='text-danger'>{errors.password?.message}</p>
             </Form.Group>

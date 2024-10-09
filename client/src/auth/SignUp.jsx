@@ -8,11 +8,20 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema } from '../utils/ValidationSchema';
+import { useState } from 'react';
 
 const SignUp = () => {
   const navigateToGoogle = () => {
     window.open('https://www.google.com', '_blank');
   };
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [reveal, setReveal] = useState(false);
+
+  // function handleReveal() {
+  //   reveal ? setReveal(false) : setReveal(true);
+  // }
+
   const {
     register,
     handleSubmit,
@@ -73,10 +82,12 @@ const SignUp = () => {
               <Form.Group className='mb-3' controlId='formBasicPassword'>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
-                  type='password'
+                  type={reveal ? 'text' : 'password'}
                   placeholder='Enter your password'
                   className='w-100'
                   {...register('password')}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <p className='text-danger'>{errors.password?.message}</p>
               </Form.Group>
@@ -84,10 +95,12 @@ const SignUp = () => {
               <Form.Group className='mb-3' controlId='formBasicPassword'>
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
-                  type='password'
+                  type={reveal ? 'text' : 'password'}
                   placeholder='Confirm your password'
                   className='w-100'
                   {...register('confirmPassword')}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <p className='text-danger'>{errors.confirmPassword?.message}</p>
               </Form.Group>
