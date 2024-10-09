@@ -23,7 +23,8 @@ const Cart = ({ cart, removeItem, calcTotalPrice, increaseQuantity, decreaseQuan
           )}
         </div>
         {cart.map((cartItem) => {
-          const { id, title, price, button, image } = cartItem;
+          const { id, title, price, quantity, image } = cartItem;
+          const totalPriceForItem = price * quantity
           return (
             <div
               className='cart-details d-flex gap-5 gap-lg-3 align-items-center cart py-0 my-0'
@@ -35,12 +36,12 @@ const Cart = ({ cart, removeItem, calcTotalPrice, increaseQuantity, decreaseQuan
               <div className='cart-2 d-flex flex-column m-0 p-0'>
                 <h4 className='cart-title'>{title}</h4>
                 <div className='d-flex gap-2 align-items-center'>
-                  <button className='subtract-cart' onClick={() => decreaseQuantity(id)}>-</button>
-                  <p className='pt-3 cart-number'>1</p>
+                  <button className='subtract-cart' onClick={() => decreaseQuantity(id)} disabled={quantity <= 1}>-</button>
+                  <p className='pt-3 cart-number'>{quantity}</p>
                   <button className='add-cart text-center' onClick={() => increaseQuantity(id)}>+</button>
                 </div>
                 <div className='d-flex justify-content-between m-0'>
-                  <p className='cart-price'>N{price}</p>
+                  <p className='cart-price'>N{totalPriceForItem.toLocaleString()}</p>
                   <button
                     className='remove-cart'
                     onClick={() => removeItem(id)}

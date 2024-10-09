@@ -13,7 +13,7 @@ function App() {
     const isPresent = cart.some((product) => product.id === item.id);
     if (isPresent) {
       const updatedCart = cart.map((product) => {
-        product.id === item.id
+       return product.id === item.id
           ? { ...product, quantity: product.quantity + 1 }
           : product;
       });
@@ -27,19 +27,27 @@ function App() {
 
   // function to increase quantity
   const increaseQuantity = (id) => {
-    const updatedCart = cart.map((product) => 
-      product.id === id ? {...product, quatity: product.quantity + 1} : product
-    )
-    setCart(updatedCart)
-  }
+    // console.log("Increasing quantity for product with id:", id);
+
+    const updatedCart = cart.map((item) =>
+      item.id === id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    );
+    setCart(updatedCart);
+  };
 
   // function to decrease quantity
   const decreaseQuantity = (id) => {
-    const updatedCart = cart.map((product) => 
-      product.id === id && product.quantity > 1 ? {...product, quatity: product.quantity - 1} : product
-    )
-    setCart(updatedCart)
-  }
+    // console.log('Decreasing quantity for product with id:', id);
+
+    const updatedCart = cart.map((item) =>
+      item.id === id && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+    setCart(updatedCart);
+  };
 
   // funtion to remove item
   function removeItem(id) {
@@ -47,10 +55,9 @@ function App() {
     setCart(remove);
   }
 
-  const calcTotalPrice = cart.reduce(
-    (total, product) => total + parseFloat(product.price) * product.quantity,
-    0
-  );
+  const calcTotalPrice = () => {
+    return cart.reduce((total, product) => total + (product.price * product.quantity), 0);
+  };
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -69,9 +76,9 @@ function App() {
                   handleAddToCart={handleAddToCart}
                   setCart={setCart}
                   removeItem={removeItem}
-                  calcTotalPrice={calcTotalPrice}
-                  decreaseQuantity={decreaseQuantity}
+                  calcTotalPrice={calcTotalPrice()}
                   increaseQuantity={increaseQuantity}
+                  decreaseQuantity={decreaseQuantity}
                 />
               }
             />
