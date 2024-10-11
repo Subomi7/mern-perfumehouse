@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useState } from 'react';
 import carts from '../cart.json';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import CartContext from '../context/CartContext';
 
 import ConfirmOrder from './ConfirmOrder';
 
-const Cart = ({ cart, removeItem, calcTotalPrice, increaseQuantity, decreaseQuantity }) => {
+const Cart = () => {
   const [modalShow, setModalShow] = useState(false);
+  const {cart, removeItem, calcTotalPrice, increaseQuantity, decreaseQuantity} = useContext(CartContext)
   return (
     <>
       <main className='cart-container d-flex flex-column justify-content-center gap-2'>
