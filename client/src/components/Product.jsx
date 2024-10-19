@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import ratingImg from '../assets/Star.svg';
 import products from '../product.json';
 import CartContext from '../context/CartContext';
+import tick from '../assets/charm_tick.png';
 
 const Product = () => {
   const { handleAddToCart, cart } = useContext(CartContext);
@@ -44,7 +45,13 @@ const Product = () => {
                   className='add-to-cart-btn w-100'
                   onClick={() => handleAddToCart(product)}
                 >
-                  {isItemInCart(id) ? 'Added to Cart' : 'Add to Cart'}
+                  {isItemInCart(id) ? (
+                    <span>
+                      <img src={tick} alt='check' /> Add to Cart
+                    </span>
+                  ) : (
+                    'Add to Cart'
+                  )}
                 </button>
               </Card.Body>
             </Card>

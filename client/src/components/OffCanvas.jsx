@@ -6,7 +6,7 @@ import menuIcon from '../assets/ci_hamburger-lg.svg';
 import { Link } from 'react-router-dom';
 const OffCanvas = ({ name, ...props }) => {
   const [show, setShow] = useState(false);
-
+ 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import success from '../assets/Success Icon.png';
 import confirmations from '../checkout.json';
 import { Link } from 'react-router-dom';
+import CartContext from '../context/CartContext';
 
 const ConfirmOrder = (props) => {
+  const { cart, calcTotalPrice } = useContext(CartContext);
   return (
     <>
       <Modal
@@ -23,29 +25,38 @@ const ConfirmOrder = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {confirmations.map((confirmation) => {
-            const { image, title, quatity, price, amount } = confirmation;
+          {cart.map((cartItem) => {
+            const { id, title, price, quantity, image } = cartItem;
+            const totalPriceForItem = price * quantity;
+
             return (
-              <div className='d-flex justify-content-between align-items-center py-3'>
+              <div
+                className='d-flex justify-content-between align-items-center py-3'
+                key={id}
+              >
                 <div className='d-flex gap-3 align-items-center'>
-                  <img src={image} alt='productname' />
+                  <img className='cart-img' src={image} alt='productname' />
                   <div>
                     <p className='gateway-title'>{title}</p>
                     <div className='d-flex gap-2'>
-                      <p className='gateway-quantity'>{quatity}</p>
-                      <p className='gateway-price'>{price}</p>
+                      <p className='gateway-quantity'>{quantity}X</p>
+                      <p className='gateway-price'>
+                      {price}
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <p className='gateway-amount'>{amount}</p>
+                  <p className='gateway-amount'>
+                    {totalPriceForItem.toLocaleString()}
+                  </p>
                 </div>
               </div>
             );
           })}
           <div className='d-flex justify-content-between align-items-center py-3'>
             <p className='gateway-price'>Order Total</p>
-            <p className='gateway-total'>N5,600</p>
+            <p className='gateway-total'>{calcTotalPrice.toLocaleString()}</p>
           </div>
 
           <button className='w-100 gateway-button'>Start New Order</button>
