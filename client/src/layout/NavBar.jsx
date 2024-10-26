@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import navLogo from '../assets/Group 9283.svg';
 import dropDownIcon from '../assets/arrow-down.svg';
 import LogOut from '../components/LogOut';
 import arrowUp from '../assets/keyboard_arrow_up.svg';
 import OffCanvas from '../components/OffCanvas';
+import CartContext from '../context/CartContext';
 
 const NavBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isReaveal, setIsReaveal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { user } = useContext(CartContext);
+  const token = localStorage.getItem('perf-token');
   function toggleIsRevealed() {
     isReaveal ? setIsReaveal(false) : setIsReaveal(true);
   }
@@ -20,11 +23,11 @@ const NavBar = () => {
           <h2 className='d-none d-lg-block'>Perfume House</h2>
         </div>
         <div className='d-none d-md-flex gap-4'>
-          {isLoggedIn ? (
+          {token ? (
             <>
               <div className='position-relative'>
-                <h1>
-                  Hi, Abigail Timber{' '}
+                <h1 className=''>
+                  {`Hi, ${user?.firstName} ${user?.lastName}`}
                   <span className='ms-3'>
                     {isReaveal ? (
                       <img

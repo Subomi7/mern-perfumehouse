@@ -5,10 +5,9 @@ import NavBar from './layout/NavBar';
 import Login from './auth/Login';
 import SignUp from './auth/SignUp';
 import { useEffect, useState } from 'react';
-
+import { Toaster } from 'react-hot-toast';
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
@@ -18,13 +17,13 @@ function App() {
               path='/'
               element={
                 <Home
-                  // cart={cart}
-                  // handleAddToCart={handleAddToCart}
-                  // setCart={setCart}
-                  // removeItem={removeItem}
-                  // calcTotalPrice={calcTotalPrice()}
-                  // increaseQuantity={increaseQuantity}
-                  // decreaseQuantity={decreaseQuantity}
+                // cart={cart}
+                // handleAddToCart={handleAddToCart}
+                // setCart={setCart}
+                // removeItem={removeItem}
+                // calcTotalPrice={calcTotalPrice()}
+                // increaseQuantity={increaseQuantity}
+                // decreaseQuantity={decreaseQuantity}
                 />
               }
             />
@@ -32,6 +31,7 @@ function App() {
           <Route path='/auth/login' element={<Login />} />
           <Route path='/auth/signup' element={<SignUp />} />
         </Routes>
+        <Toaster />
       </BrowserRouter>
     </>
   );

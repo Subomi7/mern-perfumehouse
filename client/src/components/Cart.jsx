@@ -4,12 +4,24 @@ import carts from '../cart.json';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import CartContext from '../context/CartContext';
+import toast from 'react-hot-toast'
 
 import ConfirmOrder from './ConfirmOrder';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const [modalShow, setModalShow] = useState(false);
   const {cart, removeItem, calcTotalPrice, increaseQuantity, decreaseQuantity} = useContext(CartContext)
+  const token = localStorage.getItem("perf-token")
+  const navigate = useNavigate()
+  function handle(){
+    if(token) {
+      setModalShow(true)
+    }
+    if(!token) {
+      navigate("/auth/login")
+    }
+  }
   return (
     <>
       <main className='cart-container d-flex flex-column justify-content-center gap-2'>
@@ -55,14 +67,12 @@ const Cart = () => {
             </div>
           );
         })}
-        {cart.length === 0 ? (
-          ' '
-        ) : (
+        {cart.length > 0 && (
           <>
             <div className='checkout-container'>
               <div className='checkout'>
                 <p className='checkout-title'>Sub Total</p>
-                <p className='checkout-price'>18,000</p>
+                <p className='checkout-price'>N{calcTotalPrice.toLocaleString()}</p>
               </div>
               <div className='checkout'>
                 <p className='checkout-title'>Delivery</p>
@@ -71,13 +81,13 @@ const Cart = () => {
               <div className='checkout'>
                 <p className='checkout-title'>Total</p>
                 <p className='checkout-price'>
-                  N{calcTotalPrice.toLocaleString()}
+                  N{(calcTotalPrice + 8000).toLocaleString()}
                 </p>
               </div>
             </div>
             <button
               className='w-100 checkout-button'
-              onClick={() => setModalShow(true)}
+              onClick={handle}
             >
               Confirm Order{' '}
             </button>

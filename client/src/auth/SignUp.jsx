@@ -9,6 +9,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema } from '../utils/ValidationSchema';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const navigateToGoogle = () => {
@@ -17,6 +19,8 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [reveal, setReveal] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const navigate = useNavigate();
 
   // function handleReveal() {
   //   reveal ? setReveal(false) : setReveal(true);
@@ -25,11 +29,36 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(signUpSchema),
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    setIsClicked(true);
+    try {
+      const req = await fetch('http://localhost:3000/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      const res = await req.json();
+      console.log(res);
+      if (!res.success) {
+        toast.error(res.errMsg);
+      }
+      if (res.success) {
+        toast.success(res.message);
+        navigate('/auth/login');
+      }
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setIsClicked(false);
+    }
+  };
+  const btnTxt = isClicked ? 'Loading...' : 'Sign Up';
   return (
     <>
       <div className='main-container'>
@@ -124,8 +153,12 @@ const SignUp = () => {
                   }
                 />
               </Form.Group>
-              <button className='btn-1 w-100 mb-2' type='submit'>
-                Sign Up
+              <button
+                className='btn-1 w-100 mb-2'
+                type='submit'
+                disabled={isSubmitting}
+              >
+                {btnTxt}
               </button>
               <div className='divider'>
                 <p>or</p>

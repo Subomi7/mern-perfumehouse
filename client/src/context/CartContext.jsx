@@ -6,7 +6,30 @@ const cartItemsFromLocalStoragePerf =
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(cartItemsFromLocalStoragePerf);
+  const [user, setUser] = useState(null);
+  const token = localStorage.getItem('perf-token');
+  function logOut() {
+    localStorage.removeItem('perf-token');
+    setUser(null);
+  }
 
+  const verified = async () => {
+    try {
+      const req = await fetch('http://localhost:3000/api/auth/verify', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const res = await req.json();
+      if (res.success) {
+        setUser(res.user);
+      } else {
+        setUser(null);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   const handleAddToCart = (item) => {
     const isPresent = cart.some((product) => product.id === item.id);
     if (isPresent) {
@@ -58,6 +81,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
+    verified();
   }, [cart]);
   return (
     <CartContext.Provider
@@ -69,6 +93,8 @@ export const CartProvider = ({ children }) => {
         decreaseQuantity,
         calcTotalPrice,
         removeItem,
+        user,
+        logOut,
       }}
     >
       {children}

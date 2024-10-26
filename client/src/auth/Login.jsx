@@ -7,8 +7,14 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { logInSchema } from '../utils/ValidationSchema';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
+  const [isClicked, setIsClicked] = useState(false);
+  const navigate = useNavigate();
+
   const navigateToGoogle = () => {
     window.open('https://www.google.com', '_blank');
   };
@@ -19,11 +25,41 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(logInSchema),
   });
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    setIsClicked(true);
+
+    try {
+      const req = await fetch('http://localhost:3000/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      const res = await req.json();
+      console.log(res);
+      if (!res.success) {
+        toast.error(res.errMsg);
+      }
+      if (res.success) {
+        toast.success(res.message);
+        localStorage.setItem('perf-token', res.user.token);
+        navigate('/');
+      }
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setIsClicked(false);
+    }
+  };
+  const btnTxt = isClicked ? 'Loading...' : 'Sign Up';
+
   return (
     <div className='main-container'>
       <nav>
@@ -71,17 +107,17 @@ const Login = () => {
                 <Link className='group'>Forgot Password</Link>
               </p>
             </Form.Group>
-            <button className='btn-1 w-100 mb-2' type='submit'>
-              Sign in
+            <button
+              className='btn-1 w-100 mb-2'
+              type='submit'
+              disabled={isSubmitting}
+            >
+              {btnTxt}
             </button>
             <div className='divider'>
               <p>or</p>
             </div>
-            <button
-              className='btn-2 w-100 mt-2'
-              type='submit'
-              onClick={navigateToGoogle}
-            >
+            <button className='btn-2 w-100 mt-2' type='submit'>
               <svg
                 width='23'
                 height='23'
