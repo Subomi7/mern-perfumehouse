@@ -10,6 +10,7 @@ export const CartProvider = ({ children }) => {
   const token = localStorage.getItem('perf-token');
   function logOut() {
     localStorage.removeItem('perf-token');
+    localStorage.removeItem('fullname');
     setUser(null);
   }
 

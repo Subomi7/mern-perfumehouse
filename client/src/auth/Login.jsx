@@ -50,6 +50,7 @@ const Login = () => {
       if (res.success) {
         toast.success(res.message);
         localStorage.setItem('perf-token', res.user.token);
+        localStorage.setItem("fullname", `${res.user?.firstName} ${res.user?.lastName}`)
         navigate('/');
       }
     } catch (error) {

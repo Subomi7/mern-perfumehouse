@@ -16,6 +16,8 @@ const OffCanvas = ({ name, ...props }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const token = localStorage.getItem('perf-token');
+  const fullName = localStorage.getItem('fullname');
+
   const { user } = useContext(CartContext);
 
   function toggleIsRevealed() {
@@ -33,7 +35,7 @@ const OffCanvas = ({ name, ...props }) => {
             <>
               <div className='position-relative'>
                 <h1 className=''>
-                  {`Hi, ${user?.firstName} ${user?.lastName}`}
+                  {`Hi, ${fullName}`}
                   <span className='ms-3'>
                     {isReaveal ? (
                       <img
