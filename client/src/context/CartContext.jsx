@@ -80,6 +80,12 @@ export const CartProvider = ({ children }) => {
   );
 
   useEffect(() => {
+    if (token) {
+      verified();
+    }
+  }, [token]);
+
+  useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
     verified();
   }, [cart]);

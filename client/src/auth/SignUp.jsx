@@ -22,6 +22,7 @@ const SignUp = () => {
   const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
 
+  
   // function handleReveal() {
   //   reveal ? setReveal(false) : setReveal(true);
   // }

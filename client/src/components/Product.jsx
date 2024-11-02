@@ -8,13 +8,18 @@ import tick from '../assets/charm_tick.png';
 import { useState } from 'react';
 
 const Product = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
-      const req = await fetch('https://mern-perfumehouse-2.onrender.com/api/product/products');
+      setIsLoading(true)
+      const req = await fetch(
+        'https://mern-perfumehouse-2.onrender.com/api/product/products'
+      );
       const res = await req.json();
       console.log(res);
-      setData(res.product)
+      setData(res.product);
+      setIsLoading(false);
     } catch (error) {}
   };
 
@@ -26,6 +31,9 @@ const Product = () => {
     cart.some((product) => product._id === itemId);
   return (
     <>
+      <div className='text-center'>
+        {isLoading ? <h1 className='text-success'>Loading...</h1> : null}
+      </div>
       <main className='d-flex flex-wrap justify-content-between gap-4 pt-2'>
         {data.map((product) => {
           const { image, _id, title, price, discountPrice, rateCount, rating } =
