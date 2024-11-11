@@ -35,7 +35,7 @@ const Login = () => {
     setIsClicked(true);
 
     try {
-      const req = await fetch('http://localhost:3000/api/auth/signin', {
+      const req = await fetch('https://mern-perfumehouse-2.onrender.com/api/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

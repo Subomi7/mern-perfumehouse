@@ -1,4 +1,5 @@
 import CUSTOMER from '../model/customerModel.js';
+// const bcrypt = require('bcrypt');
 
 //sign up
 
