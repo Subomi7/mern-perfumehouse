@@ -69,7 +69,7 @@ const Login = () => {
             <img src={navLogo} alt='company-logo' />
           </Link>
           <h2 className='d-none d-lg-block text-white'>Perfume House</h2>
-        </div>
+        </div> 
       </nav>
       <main className=' d-flex flex-column justify-content-center align-items-center'>
         <div className='form-container d-flex flex-column'>

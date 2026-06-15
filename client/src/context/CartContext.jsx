@@ -8,7 +8,7 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(cartItemsFromLocalStoragePerf);
   const [user, setUser] = useState(null);
   const token = localStorage.getItem('perf-token');
-  function logOut() {
+  function logOut() { 
     localStorage.removeItem('perf-token');
     localStorage.removeItem('fullname');
     setUser(null);
@@ -32,10 +32,10 @@ export const CartProvider = ({ children }) => {
     }
   };
   const handleAddToCart = (item) => {
-    const isPresent = cart.some((product) => product.id === item.id);
+    const isPresent = cart.some((product) => product._id === item._id);
     if (isPresent) {
       const updatedCart = cart.map((product) => {
-        return product.id === item.id
+        return product._id === item._id
           ? { ...product, quantity: product.quantity + 1 }
           : product;
       });

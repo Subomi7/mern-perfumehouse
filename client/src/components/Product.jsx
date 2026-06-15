@@ -89,7 +89,7 @@ const Product = () => {
                       </span>
                     </Card.Text>
                     <button
-                      disabled={isItemInCart(_id)}
+                      disabled={isItemInCart(_id)} 
                       className='add-to-cart-btn w-100'
                       onClick={() => handleAddToCart(product)}
                     >

@@ -37,12 +37,12 @@ const Cart = () => {
           )}
         </div>
         {cart.map((cartItem) => {
-          const { id, title, price, quantity, image } = cartItem;
+          const { _id, title, price, quantity, image } = cartItem;
           const totalPriceForItem = price * quantity
           return (
             <div
               className='cart-details d-flex gap-5 gap-lg-3 align-items-center cart py-0 my-0'
-              key={id}
+              key={_id}
             >
               <div className='cart-1'>
                 <img className='cart-img' src={image} alt='product image' />
@@ -50,15 +50,15 @@ const Cart = () => {
               <div className='cart-2 d-flex flex-column m-0 p-0'>
                 <h4 className='cart-title'>{title}</h4>
                 <div className='d-flex gap-2 align-items-center'>
-                  <button className='subtract-cart' onClick={() => decreaseQuantity(id)} disabled={quantity <= 1}>-</button>
+                  <button className='subtract-cart' onClick={() => decreaseQuantity(_id)} disabled={quantity <= 1}>-</button>
                   <p className='pt-3 cart-number'>{quantity}</p>
-                  <button className='add-cart text-center' onClick={() => increaseQuantity(id)}>+</button>
+                  <button className='add-cart text-center' onClick={() => increaseQuantity(_id)}>+</button>
                 </div>
                 <div className='d-flex justify-content-between m-0'>
                   <p className='cart-price'>N{totalPriceForItem.toLocaleString()}</p>
                   <button
                     className='remove-cart'
-                    onClick={() => removeItem(id)}
+                    onClick={() => removeItem(_id)}
                   >
                     Remove
                   </button>
@@ -88,7 +88,7 @@ const Cart = () => {
             <button
               className='w-100 checkout-button'
               onClick={handle}
-            >
+            > 
               Confirm Order{' '}
             </button>
           </>

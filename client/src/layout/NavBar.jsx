@@ -72,7 +72,7 @@ const NavBar = () => {
               </button>
             </>
           )}
-        </div>
+        </div> 
 
         <div className='d-md-none'>
           {['top'].map((placement, idx) => (
